@@ -1,8 +1,117 @@
-<form id="chat-form">
-  <input type="text" id="user-input" placeholder="여행지와 일정 입력해보세요">
-  <button type="submit">보내기</button>
-</form>
-<div id="chat-response"></div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해브어굿트립</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
 
-<script src="/static/js/chatbot.js"></script>
+<!-- 상단 헤더 -->
+<div class="top-header container d-flex justify-content-between align-items-center">
+  <div class="d-flex align-items-center gap-4">
+    <img src="../static/images/HGT_logo.png" alt="logo" class="logo" />
+    <div class="search-wrapper input-group">
+      <input type="text" class="form-control search-input" placeholder="검색어를 입력하세요" />
+      <button class="btn btn-mint" type="button">
+        <i class="ri-search-line"></i>
+      </button>
+    </div>
+  </div>
+  <div class="nav-icons text-center d-flex gap-4">
+    <div class="icon-block">
+      <i class="ri-user-line"></i>
+      <div>로그인</div>
+    </div>
+    <div class="icon-block">
+      <i class="ri-heart-line"></i>
+      <div>찜</div>
+    </div>
+    <div class="icon-block">
+      <i class="ri-clipboard-line"></i>
+      <div>예약확인</div>
+    </div>
+  </div>
+</div>
 
+
+<!-- 내비게이션 메뉴 -->
+<!-- nav-menu -->
+<div class="nav-menu container d-flex justify-content-start align-items-center">
+  <div class="nav-item-horizontal">
+    <i class="ri-menu-line"></i>
+    <span>전체메뉴</span>
+  </div>
+  <a href="#">해외여행</a>
+  <a href="#">국내/제주</a>
+  <a href="#">프리미엄</a>
+  <a href="#">항공/호텔</a>
+  <a href="#">테마패키지</a>
+  <a href="#">크루즈</a>
+  <a href="#">허니문</a>
+</div>
+
+<!-- 메인 슬라이드 -->
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="../static/images/kyoto.jpg" class="img-fluid w-100 h-100 object-fit-cover" />
+      <div class="slide-text">
+        <h2>시간이 멈춘 듯한 전통과<br>사계절의 아름다움</h2>
+        <p>벚꽃부터 단풍까지, 사찰과 골목에 스며든 교토의 정취</p>
+        <a href="#">상품 바로가기</a>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <img src="../static/images/moldiv.jpg" class="img-fluid w-100 h-100 object-fit-cover" />
+      <div class="slide-text">
+        <h2>푸른 바다와 하얀 모래가<br>어우러진 천국의 휴식</h2>
+        <p>몰디브의 청명한 바다와 고요한 리조트에서 누리는 완벽한 평화</p>        
+        <a href="#">상품 바로가기</a>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <img src="../static/images/sydney.jpg" class="img-fluid w-100 h-100 object-fit-cover" />
+      <div class="slide-text">
+        <h2>태양과 바다가 어우러진<br>활기찬 도시의 일상</h2>
+        <p>오페라 하우스와 본다이 비치, 시드니가 선사하는 자유로운 감성</p>        
+        <a href="#">상품 바로가기</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  
+</div>
+
+<!-- 푸터 -->
+<footer class="footer">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap py-4">
+    <div class="footer-logo">
+      <img src="../static/images/HGT_logo.png" alt="logo" height="40">
+    </div>
+    <div class="footer-links d-flex gap-4 flex-wrap">
+      <a href="#">회사소개</a>
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+      <a href="#">고객센터</a>
+    </div>
+    <div class="footer-copy text-muted small mt-2 mt-md-0">
+      © 2025 HGT Travel. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="../static/js/script.js"></script>
+
+</body>
+</html>
