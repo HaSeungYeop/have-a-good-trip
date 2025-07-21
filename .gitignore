@@ -1,0 +1,17 @@
+# API 키 & 환경변수
+.env
+
+# 파이썬 캐시
+__pycache__/
+*.pyc
+
+# IDE 설정
+.vscode/
+.idea/
+
+# 가상환경
+venv/
+.venv/
+
+# 기타 로그
+*.log
