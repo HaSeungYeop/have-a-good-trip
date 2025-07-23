@@ -10,7 +10,6 @@
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
   <link rel="stylesheet" href="../static/css/style.css">
 </head>
-<body>
 
 <!-- 상단 헤더 -->
 <div class="top-header container d-flex justify-content-between align-items-center">
@@ -147,12 +146,30 @@
   </div>
 </footer>
 
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="../static/js/script.js"></script>
+
+
+<!-- 챗봇 아이콘 및 채팅창 -->
+<div id="chatbot-toggle" class="chatbot-icon">
+  💬
+</div>
+
+<div id="chatbot-container" class="chatbot-window d-none">
+  <div class="chatbot-header">
+    <span>여행 상담 챗봇</span>
+    <button id="chatbot-close" class="chatbot-close">✖</button>
+  </div>
+  <div class="chatbot-body">
+    <div id="chat-log" class="chat-log"></div>
+    <form id="chat-form" class="chat-input-area">
+      <input type="text" id="user-input" placeholder="여행지를 입력해 보세요" required />
+      <button type="submit">전송</button>
+    </form>
+  </div>
+</div>
+
+<script src="../static/js/chatbot.js"></script>
 
 </body>
 </html>
