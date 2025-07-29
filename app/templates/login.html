@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>해브어굿트립 로그인</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body class="login-page">
+  <div class="login-wrapper">
+    <div class="login-logo">
+      <img src="../static/images/HGT_logo.png" alt="로고" />
+    </div>
+
+    <form action="/login" method="post" class="login-form">
+      <input type="text" name="username" placeholder="이메일 주소 혹은 아이디" required>
+      <div class="password-wrapper">
+        <input type="password" name="password" placeholder="비밀번호 확인" required>
+        <button type="button" class="show-password">비밀번호 표시</button>
+      </div>
+      <div class="remember-wrap">
+        <label><input type="checkbox" name="remember"> 아이디 저장</label>
+      </div>
+      <button type="submit" class="login-btn">로그인</button>
+
+      <div class="login-links">
+        <a href="/find">아이디/비밀번호 찾기</a>
+        <span>|</span>
+        <a href="/register">회원가입</a>
+      </div>
+
+      <div class="login-socials">
+        <a href="#"><img src="../static/images/naver_logo.jpg" alt="네이버"></a>
+        <a href="#"><img src="../static/images/kakao_logo.jpg" alt="카카오"></a>
+        <a href="#"><img src="../static/images/google_logo.jpg" alt="구글"></a>
+      </div>
+
+      <p class="login-desc">
+        · 해브어굿트립 회원으로 가입하시면 포인트적립(일부 상품 제외),<br>
+        회원전용혜택 제공 등 더 많은 서비스를 이용하실 수 있습니다.
+      </p>
+      <p class="login-copy">© HGT Travel. All rights reserved.</p>
+    </form>
+  </div>
+
+  <script src="../static/js/script.js"></script>
+  
+</body>
+</html>
+
