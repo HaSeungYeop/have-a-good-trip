@@ -82,3 +82,18 @@ setInterval(() => {
   currentIndex = (currentIndex + 1) % keywordCount;
   keywordList.style.transform = `translateY(-${currentIndex * 24}px)`;
 }, 3000);
+
+
+// 로그인 비밀번호 보안
+document.querySelectorAll('.show-password').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const input = this.previousElementSibling;
+    if (input.type === 'password') {
+      input.type = 'text';
+      this.textContent = '숨기기';
+    } else {
+      input.type = 'password';
+      this.textContent = '비밀번호 표시';
+    }
+  });
+});

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>해브어굿트립 회원가입</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body class="login-page">
+  <div class="login-wrapper">
+    <h1 class="register-title">회원가입</h1>
+
+    <form action="/register" method="post" class="login-form">
+      <div class="form-input-row">
+        <input type="email" name="email" placeholder="아이디(이메일)" required>
+        <button type="button" class="verify-btn">인증메일 발송</button>
+      </div>
+
+      <input type="password" name="password" placeholder="비밀번호 (영문, 숫자, 특수문자 포함 8~20자)" required>
+      <input type="password" name="confirm_password" placeholder="비밀번호 확인" required>
+
+      <input type="text" name="name" placeholder="이름 (실명을 정확히 입력해 주세요)" required>
+
+      <div class="birth-wrapper">
+        <input type="text" name="birth_year" placeholder="년(4자리)" maxlength="4" required>
+        <input type="text" name="birth_month" placeholder="월" maxlength="2" required>
+        <input type="text" name="birth_day" placeholder="일" maxlength="2" required>
+      </div>
+
+      <input type="text" name="phone" placeholder="휴대폰 번호 (숫자만 입력)" required>
+
+      <button type="submit" class="login-btn">가입하기</button>
+
+      <div class="login-links">
+        <a href="/login">로그인으로 돌아가기</a>
+      </div>
+    </form>
+    <p class="register-desc">
+        · 해브어굿트립 회원으로 가입하시면 포인트 적립(일부 상품 제외),<br>
+        전용 할인 혜택, 예약 내역 확인 등 다양한 서비스를 이용하실 수 있습니다.
+    </p>
+    <p class="login-copy">© HGT Travel. All rights reserved.</p>
+      
+  </div>
+</body>
+</html>
