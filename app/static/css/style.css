@@ -698,7 +698,7 @@ body.login-page {
 /* 🚀 개선된 챗봇 스타일 */
 .chatbot-icon {
   position: fixed;
-  bottom: 24px;
+  bottom: 30px;
   right: 24px;
   width: 64px;
   height: 64px;
@@ -785,6 +785,7 @@ body.login-page {
   padding: 16px;
   font-size: 16px;
   min-height: 0; /* Flexbox 스크롤 핵심 */
+  align-items: flex-start;  /* 🔥 기본은 bot(좌측 정렬) */
   }
   
   /* 🎨 개선된 말풍선 스타일 */
