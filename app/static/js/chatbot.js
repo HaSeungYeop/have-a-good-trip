@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbotContainer = document.getElementById("chatbot-container");
   const chatbotClose = document.getElementById("chatbot-close");
 
+  // ✅ 세션 ID 생성 (페이지 로드 시 1회)
+  const sessionId = "sess_" + Math.random().toString(36).substring(2, 12);
+
   // 챗봇 열기/닫기
   if (chatbotToggle && chatbotContainer && chatbotClose) {
     chatbotToggle.addEventListener("click", () => {
@@ -17,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chat-form");
   const userInput = document.getElementById("user-input");
   const submitButton = chatForm?.querySelector('button[type="submit"]');
-  
+
   if (chatForm && userInput && submitButton) {
     chatForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -25,11 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = userInput.value.trim();
       if (!message) return;
 
-      // 사용자 메시지 표시
       appendMessage("user", message);
       userInput.value = "";
 
-      // 🔄 로딩 상태 시작
       showLoadingMessage();
       disableInput(true);
 
@@ -39,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ message: message })
+          body: JSON.stringify({
+            message: message,
+            session_id: sessionId  // ✅ 세션 ID 추가
+          })
         });
 
         if (!res.ok) {
@@ -47,23 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const data = await res.json();
-        
-        // 🔄 로딩 메시지 제거 후 실제 응답 표시
+
         removeLoadingMessage();
         appendMessage("bot", data.response);
-        
+
       } catch (err) {
         console.error("❌ fetch 에러:", err);
         removeLoadingMessage();
         appendMessage("bot", "⚠️ 서버 응답에 실패했습니다. 잠시 후 다시 시도해주세요.");
       } finally {
-        // 🔄 로딩 상태 종료
         disableInput(false);
       }
     });
   }
 
-  // 💬 메시지 추가 함수
   function appendMessage(sender, text) {
     const chatLog = document.getElementById("chat-log");
     if (!chatLog) return;
@@ -73,12 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
     messageDiv.textContent = text;
 
     chatLog.appendChild(messageDiv);
-    
-    // 📜 자동 스크롤
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
-  // 🔄 로딩 메시지 표시
   function showLoadingMessage() {
     const chatLog = document.getElementById("chat-log");
     if (!chatLog) return;
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
     chatLog.scrollTop = chatLog.scrollHeight;
   }
 
-  // 🔄 로딩 메시지 제거
   function removeLoadingMessage() {
     const loadingMessage = document.getElementById("loading-message");
     if (loadingMessage) {
@@ -106,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 🔒 입력 비활성화/활성화
   function disableInput(disabled) {
     if (userInput) {
       userInput.disabled = disabled;
@@ -118,8 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ✅ 페이지 로드 시 챗봇 인사 메시지
-  const initialGreeting = "안녕하세요! 여행 전문가 챗봇입니다. 여행지를 추천받고 싶으시거나 일정 계획이 필요하시면 편하게 말씀해 주세요. 여행 목적, 예산, 기간 등 궁금한 내용을 알려주시면 더 정확하게 도와드릴 수 있어요!";
+  const initialGreeting = "안녕하세요! 여행 전문가 챗봇입니다. 여행지를 추천받고 싶으시거나 일정 계획이 필요하시면 편하게 말씀해 주세요.";
   setTimeout(() => {
     appendMessage("bot", initialGreeting);
   }, 500);
