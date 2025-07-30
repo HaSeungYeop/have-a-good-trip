@@ -13,7 +13,6 @@ from app.db import engine, Base
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
 # 예외처리 미들웨어 (오류 터미널에 자세히 찍기)
 @app.middleware("http")
 async def catch_exceptions_middleware(request: Request, call_next):
