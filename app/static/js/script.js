@@ -97,3 +97,77 @@ document.querySelectorAll('.show-password').forEach(btn => {
     }
   });
 });
+
+
+// 로그인
+const loginForm = document.querySelector('.login-form');
+
+loginForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(loginForm);
+  const data = {
+    email: formData.get('username'),  // 로그인시 username 필드로 이메일 받는다고 가정
+    password: formData.get('password'),
+  };
+
+  try {
+    const res = await fetch('/auth/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      // JWT 토큰 저장 (로컬스토리지에 저장하는 간단 예)
+      localStorage.setItem('access_token', result.access_token);
+      alert('로그인 성공!');
+      window.location.href = '/'; // 홈으로 이동
+    } else {
+      alert(result.detail || '로그인 실패');
+    }
+  } catch (err) {
+    alert('서버 오류가 발생했습니다.');
+  }
+});
+
+
+// 회원가입
+const registerForm = document.querySelector('.login-form');
+
+registerForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // 폼 데이터 추출
+  const formData = new FormData(registerForm);
+  const data = {
+    username: formData.get('email'),  // username 대신 email로 바꾸려면 백엔드도 같이 맞춰야 함
+    email: formData.get('email'),
+    password: formData.get('password'),
+  };
+
+  // 비밀번호 확인 체크
+  if (formData.get('password') !== formData.get('confirm_password')) {
+    alert('비밀번호가 일치하지 않습니다.');
+    return;
+  }
+
+  try {
+    const res = await fetch('/auth/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (res.ok) {
+      alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
+      window.location.href = '/login';
+    } else {
+      alert(result.detail || '회원가입에 실패했습니다.');
+    }
+  } catch (err) {
+    alert('서버 오류가 발생했습니다.');
+  }
+});

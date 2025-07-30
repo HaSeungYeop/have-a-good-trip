@@ -550,6 +550,12 @@ body.login-page {
   transition: background-color 0.2s ease;
 }
 
+.login-btn a,
+.login-btn a:visited {
+  color: #fff;
+  text-decoration: none !important;
+}
+
 .login-links {
   margin-top: 15px;
   font-size: 14px;
